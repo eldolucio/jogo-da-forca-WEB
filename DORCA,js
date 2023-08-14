@@ -1,0 +1,27 @@
+var word = ["_", "_", "_", "_", "_", "_"];
+var gallows = document.getElementById("gallows");
+var input = document.getElementById("input");
+var submit = document.getElementById("submit");
+
+submit.addEventListener("click", function() {
+  var letter = input.value;
+
+  // Check if the letter is in the word.
+  for (var i = 0; i < word.length; i++) {
+    if (word[i] === letter) {
+      word[i] = letter;
+      break;
+    }
+  }
+
+  // Update the word.
+  var wordElement = document.querySelector("#word .letter");
+  wordElement.textContent = word.join("");
+
+  // Check if the game is over.
+  if (word.indexOf("_") === -1) {
+    alert("You won!");
+  } else if (gallows.style.display === "block") {
+    alert("You lost!");
+  }
+});
