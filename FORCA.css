@@ -1,0 +1,46 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#word {
+  font-size: 36px;
+  margin: 20px 0;
+}
+
+#gallows {
+  display: none;
+}
+
+.letter {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.head {
+  display: none;
+}
+
+.body {
+  display: none;
+}
+
+.left-arm {
+  display: none;
+}
+
+.right-arm {
+  display: none;
+}
+
+.left-leg {
+  display: none;
+}
+
+.right-leg {
+  display: none;
+}
