@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman Game</title>
+</head>
+<body>
+  <h1>Hangman Game</h1>
+  <div id="word">
+    <span class="letter"></span>
+    <span class="letter"></span>
+    <span class="letter"></span>
+    <span class="letter"></span>
+    <span class="letter"></span>
+    <span class="letter"></span>
+  </div>
+  <div id="gallows">
+    <div class="pole"></div>
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="left-arm"></div>
+    <div class="right-arm"></div>
+    <div class="left-leg"></div>
+    <div class="right-leg"></div>
+  </div>
+  <input type="text" id="input" placeholder="Guess a letter">
+  <button id="submit">Submit</button>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // Get the word and gallows elements
+      var word = $("#word");
+      var gallows = $("#gallows");
+
+      // Get the input and submit buttons
+      var input = $("#input");
+      var submit = $("#submit");
+
+      // Set the word
+      word.text("_ _ _ _ _ _ _");
+
+      // Set the gallows
+      gallows.hide();
+
+      // On submit, guess the letter
+      submit.on("click", function() {
+        // Get the letter
+        var letter = input.val();
+
+        // Check if the letter is in the word
+        if (word.text().indexOf(letter) > -1) {
+          // The letter is in the word
+          // Update the word
+          word.text(word.text().replace("_", letter));
+        } else {
+          // The letter is not in the word
+          // Draw a part of the gallows
+          gallows.show();
+        }
+
+        // Check if the game is over
+        if (word.text().indexOf("_") === -1) {
+          // The game is over, the user won
+          alert("You won!");
+        } else if (gallows.is(":visible")) {
+          // The game is over, the user lost
+          alert("You lost!");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
